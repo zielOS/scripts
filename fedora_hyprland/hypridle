@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+swayidle -w \
+    timeout 600 run-lockscreen \
+    timeout 800 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'mpc pause' \
+    before-sleep "$lockscreen"

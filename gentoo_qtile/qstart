@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Export files here
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export QT_QPA_PLATFORMTHEME=qt5ct
+export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux
+export MANPATH=$MANPATH:/usr/local/texlive/2022/texmf-dist/doc/man
+export INFOPATH=$INFOPATH/usr/local/texlive/2022/texmf-dist/doc/info
+
+# Kill already running process
+_ps=(picom dunst xfce4-power-manager lxpolkit)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+
+# Fix cursor
+xsetroot -cursor_name left_ptr &
+
+# Compositor
+while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
+picom --config /home/ahsan/.config/picom/picom.conf &
+
+# Restore wallpaper
+feh --bg-fill "$HOME/.config/wallpapers/wallpaper.png"
+
+xrandr --output DP-0 --off --output DP-1 --off --output DP-0 --scale 0.9x0.9 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2 --scale 0.9x0.9 --primary --mode 3440x1440 --pos 2304x0 --rotate normal --output DP-4 --scale 0.9x0.9 --mode 2560x1440 --pos 5400x0 --rotate normal --output USB-C-0 --off &
+
+## Launch notification daemon
+dunst -config /home/ahsan/.config/dunst/dunstrc &
+
+xrdb merge ~/.Xresources 
+
+~/git/chadwm/scripts/bar.sh &
+
+## Launch apps
+ckb-next &
+insync start &
+gummy start 
+gummy -b 85 -t 5700
+eww -daemon &
+
+# Launch DWM
+while dwm; [ $? -ne 0  ]; do echo "start dwm"; done

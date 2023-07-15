@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+THEME='Catppuccin-Mocha-Standard-Lavender-Dark'
+ICONS='Papirus-Dark'
+FONT='JetBrainsMono Nerd Font 13'
+CURSOR='Catppuccin-Mocha-Lavender'
+SCALE='1.5'
+
+SCHEMA='gsettings set org.gnome.desktop.interface'
+
+apply_themes () {
+	${SCHEMA} gtk-theme "$THEME"
+	${SCHEMA} icon-theme "$ICONS"
+	${SCHEMA} cursor-theme "$CURSOR"
+	${SCHEMA} font-name "$FONT"
+	${SCHEMA} text-scaling-factor "$SCALE"
+}
+
+apply_themes

@@ -1,0 +1,8 @@
+=app-editors/emacs-29.0.9999-r1 ** ~amd64
+=gui-wm/hyprland-9999-r4 ** ~amd64
+=gui-libs/xdg-desktop-portal-hyprland-9999 ** ~amd64
+>=dev-qt/qtbase-6
+>=dev-qt/qtwayland-6
+>=dev-qt/qtdeclarative-6
+>=dev-qt/qtshadertools-6
+=app-backup/grub-btrfs-9999 ** ~amd64

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ "$1" == "--file" ]]; then
+	thunar
+elif [[ "$1" == "--editor" ]]; then
+	emacs
+elif [[ "$1" == "--web" ]]; then
+	brave-browser
+elif [[ "$1" == "--nvim" ]]; then
+	st -e nvim
+fi

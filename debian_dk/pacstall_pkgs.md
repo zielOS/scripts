@@ -1,0 +1,4 @@
+- picom-zielOS
+- dk window manager
+- eww
+- firefox

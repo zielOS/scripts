@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# E X P O R T   F I L E S
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export QT_QPA_PLATFORMTHEME=qt5ct
+export PATH=$HOME/.local/bin:$PATH
+
+# K I L L   R U N N I N G   A P P S
+_ps=(picom dunst xfce4-power-manager polkit-gnome-authentication-agent-1)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# D I S P L A Y
+xrandr --output DP-0 --scale 0.9x0.9 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-2 --scale 0.9x0.9 --primary --mode 3440x1440 --pos 2304x0 --rotate normal --output DP-4 --scale 0.9x0.9 --mode 2560x1440 --pos 5400x0 --rotate normal & 
+
+# C U R S O R
+xsetroot -cursor_name left_ptr &
+
+# C O M P O S I T O R
+while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
+picom --config $HOME/.config/picom/picom.conf &
+
+# P O L I C Y K I T
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# W A L L P A P E R
+feh --bg-fill "$HOME/.config/wallpapers/wallpaper.jpeg" &
+
+# S T A T U S B A R
+dwmblocks &
+
+# N O T I F Y
+dunst -config $HOME/.config/dunst/dunstrc &
+
+# P O W E R  M A N A G E M E N T
+xfce4-power-manager &
+
+# X R E S O U R C E S
+xrdb merge ~/.Xresources 
+
+# F I X   J A V A
+wmname "LG3D"
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+
+## Launch apps
+ckb-next &
+insync start &
+gummy start & 
+gummy -b 85 -t 5700 &
+eww -daemon &
+
+# Launch DWM
+while dwm; [ $? -ne 0  ]; do echo "start dwm"; done

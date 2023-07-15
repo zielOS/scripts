@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd
+cd scripts/debian_awesome
+sudo cp -R 01norecommend 99translations /etc/apt/apt.conf.d/
+
+cd 
+

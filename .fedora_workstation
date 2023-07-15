@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Setting Up Repo"
+./1-repos
+
+echo "Installing Dependencies"
+./2-depends.sh
+
+echo "Installing rust and cargo"
+
+echo "Installing miscelleanous packages"
+
+./misc_pkgs.sh
+
+echo "Installing nvidia packages"
+./nvidia.sh
+
+echo "Installing neovim"
+./neovim.sh
+
+echo "Setting up Systemd"
+./systemd.sh
+
+echo "Installing hyprland"
+./hyprland.sh
+
+echo "Downloading Dotfiles"
+./dotfiles.sh
+
+echo "Setting Up Scripts"
+./scripts.sh
+
+echo "Setting Up Themes"
+./theme.sh
+

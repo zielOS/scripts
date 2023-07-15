@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Kill already running process
+_ps=(waybar mako polkit-gnome-authentication-agent-1)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Polkit agent
+/usr/lib/xfce-polkit/xfce-polkit &
+
+# Set wallpaper
+swaybg --output '*' --mode fill --image ~/.config/wallpapers/wallpaper.png &
+
+# Idle 
+# run-swayidle &
+
+# Run emacs-daemon as startup
+emacs --daemon &
+
+# Lauch notification daemon (mako)
+hyprnotifcations &
+
+# Start Apps
+ckb-next &
+QT_QPA_PLATFORM=xcb insync start &
+
+# Set GTK Theme
+gsettings set org.gnome.desktop.interface gtk-theme Mocha-Mauve 
+gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
+gsettings set org.gnome.desktop.interface font-name "JetBrainsMono Nerd Font 12"

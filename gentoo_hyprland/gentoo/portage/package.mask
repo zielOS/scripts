@@ -1,0 +1,13 @@
+>=dev-lang/python-3.12
+>=sys-devel/gcc-13
+=x11-libs/gtk+-3.24.37::mv
+gui-wm/hyprland::guru
+dev-lang/rust::pg_overlay
+dev-lang/python::pg_overlay
+dev-lang/luajit::pg_overlay
+x11-libs/gtk+::mv
+x11-libs/gtk+::pg_overlay
+x11-base/xwayland::pg_overlay
+dev-lang/rust::pg_overlay
+virtual/rust::pg_overlay
+media-sound/sndio::pg_overlay

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Export files here
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export QT_QPA_PLATFORMTHEME=qt5ct
+export PATH=$PATH:$HOME/.emacs.d/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux
+
+# Kill already running process
+_ps=(picom dunst xfce4-power-manager lxpolkit)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Launch xrandr 
+i3monitor &
+
+# Fix cursor
+xsetroot -cursor_name left_ptr &
+
+# Polkit agent
+lxpolkit &
+
+# Enable power management
+xfce4-power-manager &
+
+# Restore wallpaper
+feh --bg-fill "$HOME/.config/wallpapers/wallpaper.png"
+
+# Launch compositor
+while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
+picom -b --config /home/ahsan/.config/picom/picom.conf &
+
+## Launch notification daemon
+dunst -config /home/ahsan/.config/dunst/dunstrc &
+
+xrdb merge ~/.Xresources 
+
+## Launch apps
+#ckb-next &
+#insync start &
+gummy start 
+gummy -b 85 -t 6000

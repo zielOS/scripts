@@ -1,0 +1,105 @@
+*/* PYTHON_TARGETS: python3_11
+media-libs/vulkan-loader layers
+media-libs/mesa vulkan wayland lm-sensors
+x11-drivers/nvidia-drivers wayland lm-sensors X tools 
+app-editors/neovim lto
+dev-libs/libxml2 icu
+www-client/chromium gtk4 hangouts lto pgo properietary-codecs widevine
+media-libs/harfbuzz icu
+>=media-libs/libpng-1.6.39 -apng
+media-libs/libpng -apng
+app-backup/snapper systemd 
+net-libs/nodejs inspector
+net-p2p/transmission gtk -qt5
+net-libs/nodejs lto npm 
+sys-config/ltoize keep-nocommon
+dev-util/cmake -qt5
+media-fonts/iosevka X iosevka-aile
+app-text/xmlto text
+xfce-base/thunar udisks
+gnome-base/gvfs udisks
+dev-libs/libdbusmenu gtk3
+app-crypt/gcr gtk
+sys-apps/kmod zstd
+sys-boot/grub:2 device-mapper
+app-admin/sysstat lto
+sys-libs/zlib minizip
+app-text/poppler cairo
+dev-lang/python lto pgo ensurepip tk 
+gui-apps/waybar experimental libinput tray logind network popups pipewire systemd upower wifi udev
+sys-devel/gcc lto pgo graphite jit
+sys-apps/firejail apparmor 
+app-editors/emacs gtk -X jit harfbuzz imagemagick dynamic-loading sound tree-sitter
+app-portage/gs-elpa python_targets_python3_11
+app-portage/g-sorcery git python_targets_python3_11 
+net-firewall/firewalld iptables
+app-text/ghostscript-gpl cups
+net-firewall/nftables xtables python json
+dev-python/PyQt5 widgets
+media-sound/pulseaudio -daemon
+media-video/pipewire sound-server
+gui-apps/swaybg gdk-pixbuf
+gui-apps/eww wayland -X
+gui-apps/swaylock gdk-pixbuf
+gui-apps/swaync scripting
+sys-apps/kmod tools
+gui-apps/grim jpeg
+dev-qt/qtbase opengl egl eglfs gles2-only
+dev-qt/qtdeclarative opengl
+gui-libs/xdg-desktop-portal-hyprland systemd
+sys-apps/xdg-desktop-portal screencast
+www-client/firefox wayland -telemetry hwaccel screencast openh264  clanglto-O3.conf 
+gui-wm/hyprland X systemd video_cards_nvidia 
+net-vpn/protonvpn-gui python_targets_python3_10
+sys-kernel/cachyos-sources bore eevdf high-hz -latency 
+x11-base/xorg-server xvfb
+media-libs/libvpx postproc
+dev-lang/rust nightly
+media-video/ffmpeg x264
+sys-apps/systemd policykit
+gui-libs/wlroots tinywl
+media-libs/libsndfile minimal
+media-sound/mpg123 -pulseaudio
+media-libs/libpng apng
+dev-qt/qtgui eglfs egl dbus
+sys-libs/gdbm berkdb
+dev-qt/qtwidgets dbus
+sys-kernel/gentoo-sources experimental
+dev-qt/qtbase opengl egl eglfs gles2-only
+dev-qt/qtdeclarative opengl
+sys-fs/squashfs-tools lzo lzma zstd
+app-containers/snapd apparmor
+gui-apps/foot -grapheme-clustering
+dev-libs/boost context
+dev-libs/boehm-gc cxx
+app-portage/layman g-sorcery
+x11-base/xwayland xcsecurity
+app-backup/snapper systemd
+virtual/libcrypt static-libs
+sys-libs/libxcrypt static-libs
+gui-libs/wlroots x11-backend
+media-fonts/nerd-fonts jetbrainsmono firacode
+gui-libs/gtk-layer-shell introspection
+net-wireless/wpa_supplicant dbus
+gui-apps/hyprland-plugins split-monitor-workspaces X -hyprbars -borders-plus-plus
+net-p2p/transmission gtk -qt5
+sys-apps/nix etc-profile gc sodium
+net-libs/libssh server
+sys-kernel/clear-sources experimental
+net-libs/gnutls guile
+app-portage/layman sync-plugin-portage git
+sys-config/ltoize clang
+sys-apps/flatpak policykit seccomp systemd
+dev-util/nvidia-cuda-toolkit debugger nsight profiler rdma sanitizer vis-profiler
+app-admin/keepassxc browser autotype keeshare network yubikey
+dev-python/PyQt5 opengl
+dev-python/pillow webp
+dev-python/QtPy svg printsupport
+dev-python/PyQt5 network svg sql printsupport
+app-crypt/gnupg nls
+app-office/libreoffice branding googledrive gtk gstreamer
+dev-libs/boost nls
+dev-libs/xmlsec nss
+sys-auth/polkit gtk systemd 
+www-client/vivaldi proprietary-codes widevine
+app-misc/tmux vim-syntax

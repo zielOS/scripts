@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Export files here
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export QT_QPA_PLATFORMTHEME=qt5ct
+export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux
+
+# Kill already running process
+_ps=(picom dunst xfce4-power-manager polkit-mate-authentication-agent-1)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Fix cursor
+xsetroot -cursor_name left_ptr &
+
+# Polkit agent
+/usr/libexec/polkit-mate-authentication-agent-1 &
+
+# Enable power management
+xfce4-power-manager &
+
+# Launch xrandr
+dwmmonitor &
+
+# Launch sxhkd
+sxhkd &
+
+# Restore wallpaper
+feh --bg-fill "$HOME/.config/wallpapers/wallpaper.jpeg"
+
+# Launch compositor
+while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
+picom --config /home/ahsan/.config/picom/picom.conf &
+
+# Lauch dwmbar
+dwmblocks &
+
+## Launch notification daemon
+dunst -config $HOME/.config/dunst/dunstrc &
+
+xrdb merge ~/.Xresources
+
+## Launch apps
+ckb-next &
+insync start &
+gummy start 
+gummy -t 85 -b 6000
+
+# Launch DWM
+while dwm; [ $? -ne 0  ]; do echo "start dwm"; done

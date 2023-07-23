@@ -241,7 +241,7 @@ emerge -aq app-arch/unzip app-arch/zip app-arch/unrar sys-fs/btrfs-progs sys-fs/
 
 ln -sf ../usr/share/zoneinfo/Canada/Mountain /etc/localtime && nano /etc/locale.gen && locale-gen && eselect locale list && eselect locale set 4 && env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
-systemd-firstboot --prompt --setup-machine-id && systemctl preset-all && systemctl enable NetworkManager fstrim.timer acpid systemd-timesyncd sysstat apparmor auditd power-profiles-daemon nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service
+systemd-firstboot --prompt --setup-machine-id && systemctl preset-all && systemctl enable NetworkManager fstrim.timer systemd-timesyncd sysstat apparmor auditd power-profiles-daemon nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service
 
 passwd && useradd -m -G users,wheel,audio,video,cron -s /bin/bash ahsan && passwd ahsan && EDITOR=nvim visudo
 

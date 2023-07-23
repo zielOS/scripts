@@ -18,11 +18,11 @@ export TDESKTOP_DISABLE_GTK_INTEGRATION=1
 export CLUTTER_BACKEND=wayland
 export BEMENU_BACKEND=wayland
 export GDK_BACKEND=wayland
-#export GDK_SCALE=1.8
-#export GDK_DPI_SCALE=1.6
+export GDK_SCALE=1.8
+export GDK_DPI_SCALE=1.6
 
 ## Qt environment
-export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORM="xcb"
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_SCALE_FACTOR=1
 export QT_FONT_DPI=165 clementine

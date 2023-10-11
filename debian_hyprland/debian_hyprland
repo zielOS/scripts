@@ -1,0 +1,95 @@
+#!/bin/bash
+
+cd
+cd scripts/debian_hyprland
+sudo cp -R 01norecommend /etc/apt/apt.conf.d/
+sudo cp -R sources.list /etc/apt/
+sudo cp -R preferences /etc/apt/
+
+sudo apt update && sudo apt install nala zstd
+echo "Installing packages"
+cd
+sudo nala update && sudo nala upgrade
+sudo nala install thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin tumbler gvfs zsh sysstat wget transmission-gtk zathura zathura-pdf-poppler pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber alsa-utils apt-transport-https cmake meson pkg-config unzip curl ckb-next bleachbit build-essential ripgrep fd-find tree-sitter-cli curl papirus-icon-theme fzf zoxide firefox bat maim python3-pynvim pymol pipx python3-yapf black isort docker python3-matplotlib  python3-scipy python3-sklearn python3-biopython python3-pandas rng-tools haveged lynis auditd sysstat acct qt5-style-kvantum qt6ct qt5ct swaybg swayidle swaylock wl-clipboard grim slurp wf-recorder xwayland gjs sassc brightnessctl pavucontrol python3-pam flatpak
+
+echo "Installing pacstall & packages"
+sudo bash -c "$(curl -fsSL https://pacstall.dev/q/install || wget -q https://pacstall.dev/q/install -O -)"
+pacstall -I lsd-deb
+pacstall -I neovim
+pacstall -I alacritty
+pacstall -I zoom-deb
+pacstall -I discord
+pacstall -I zotero
+
+echo "Installing emacs"
+sudo apt-get build-dep emacs
+wget https://gnu.mirror.constant.com/emacs/emacs-29.1.tar.xz
+tar -xvf emacs-29.1.tar.xz && cd emacs-29.1 && ./autogen.sh
+./configure --with-pgtk --with-native-compilation --with-modules --with-json --with-mailutils --with-imagemagick --with-tree-sitter --with-xft --with-modules --with-threads --with-harfbuzz --with-sqlite3 --without-jpeg --without-tiff --without-gif --without-png --without-rsvg --without-webp
+make -j22
+sudo make install && cd
+
+
+echo "Installing hyprland"
+sudo apt-get install -y meson wget build-essential ninja-build cmake-extras cmake gettext gettext-base fontconfig libfontconfig-dev libffi-dev libxml2-dev libdrm-dev libxkbcommon-x11-dev libxkbregistry-dev libxkbcommon-dev libpixman-1-dev libudev-dev libseat-dev seatd libxcb-dri3-dev libvulkan-dev libvulkan-volk-dev  vulkan-validationlayers-dev libvkfft-dev libgulkan-dev libegl-dev libgles2 libegl1-mesa-dev glslang-tools libinput-bin libinput-dev libxcb-composite0-dev libavutil-dev libavcodec-dev libavformat-dev libxcb-ewmh2 libxcb-ewmh-dev libxcb-present-dev libxcb-icccm4-dev libxcb-render-util0-dev libxcb-res0-dev libxcb-xinput-dev xdg-desktop-portal-wlr
+
+git clone --recursive https://github.com/hyprwm/xdg-desktop-portal-hyprland  && cd xdg-desktop-portal-hyprland/ && make all && sudo make install && cd
+
+git clone --recursive https://github.com/hyprwm/Hyprland && cd Hyprland && git checkout tags/v0.30.0
+meson _build && ninja -C _build
+
+
+echo "Installing waybar"
+
+#stuff to install: swww swappy wayshot hyprpicker
+
+echo "Setting up Dotfiles"
+sudo rm -R ~/.config/
+cd && mkdir ~/.config
+ln -s $HOME/.dots/.fonts $HOME/
+ln -s $HOME/.dots/.themes $HOME/
+ln -s $HOME/.dots/.config/ckb-next $HOME/.config/
+ln -s $HOME/.dots/.config/eww $HOME/.config/
+ln -s $HOME/.dots/.config/gtk-3.0 $HOME/.config/
+ln -s $HOME/.dots/.config/gtk-3.0 $HOME/.config/
+ln -s $HOME/.dots/.config/ags $HOME/.config/
+ln -s $HOME/.dots/.config/hypr  $HOME/.config/
+ln -s $HOME/.dots/.config/alacritty $HOME/.config/
+ln -s $HOME/.dots/.config/lazygit $HOME/.config/
+ln -s $HOME/.dots/.config/Thunar $HOME/.config/
+ln -s $HOME/.dots/.config/zsh $HOME/.config/
+ln -s $HOME/.dots/.gtkrc-2.0 $HOME/
+ln -s $HOME/.dots/.zshrc $HOME/
+ln -s $HOME/.dots/colorscheme.css $HOME/
+ln -s $HOME/.dots/gentoo_setup $HOME/
+ln -s $HOME/.dots/electron-flags.conf $HOME/.config/
+ln -s $HOME/.dots/electron13-flags.conf $HOME/.config/
+
+echo "Installing ags"
+sudo apt install node-typescript npm meson libgjs-dev gjs libgtk-layer-shell-dev libgtk-3-dev libpulse-dev network-manager-dev libgnome-bluetooth-3.0-dev libdbusmenu-gtk3-dev
+git clone --recursive https://github.com/Aylur/ags.git && cd ags
+npm install
+meson setup build
+sudo meson install -C build && cd
+
+echo "Installing xanmod kernel"
+wget -qO - https://dl.xanmod.org/archive.key | sudo gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/xanmod-archive-keyring.gpg] http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-release.list
+sudo apt update && sudo apt install linux-xanmod-x64v3
+
+echo "Installing rustup & rust packages"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+git clone https://github.com/Horus645/swww.git && cd swww
+cargo build --release && cd
+cargo install wayshot
+
+echo "Setting Up Systemd"
+sudo systemctl set-default graphical.target
+systemctl --user enable --now wireplumber.service pipewire-pulse.socket pipewire.socket pipewire-pulse.service pipewire.service pipewire-pulse.socket pipewire.socket pipewire-pulse.service pipewire.service
+
+cd && mkdir ~/.npm-global && npm config set prefix '~/.npm-global'
+
+curl -fsSL https://fnm.vercel.app/install | sh
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
+

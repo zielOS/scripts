@@ -9,7 +9,7 @@ sudo apt update && sudo apt install nala zstd
 echo "Installing packages"
 cd
 sudo nala update && sudo nala upgrade
-sudo nala install thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin tumbler gvfs zsh sysstat wget transmission-gtk zathura zathura-pdf-poppler pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber alsa-utils apt-transport-https cmake meson pkg-config unzip curl ckb-next bleachbit build-essential ripgrep fd-find tree-sitter-cli curl papirus-icon-theme fzf zoxide firefox bat maim python3-pynvim pymol pipx python3-yapf black isort docker python3-matplotlib  python3-scipy python3-sklearn python3-biopython python3-pandas rng-tools haveged lynis auditd sysstat acct qt5-style-kvantum qt6ct qt5ct swaybg swayidle swaylock wl-clipboard grim slurp wf-recorder xwayland gjs sassc brightnessctl pavucontrol python3-pam flatpak
+sudo nala install network-manager thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin tumbler gvfs zsh sysstat wget transmission-gtk zathura zathura-pdf-poppler pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber alsa-utils apt-transport-https cmake meson pkg-config unzip curl ckb-next bleachbit build-essential ripgrep fd-find tree-sitter-cli curl papirus-icon-theme fzf zoxide firefox bat maim python3-pynvim pymol pipx python3-yapf black isort docker python3-matplotlib  python3-scipy python3-sklearn python3-biopython python3-pandas rng-tools haveged lynis auditd sysstat acct qt5-style-kvantum qt6ct qt5ct swaybg swayidle swaylock wl-clipboard grim slurp wf-recorder xwayland gjs sassc brightnessctl pavucontrol python3-pam flatpak
 
 echo "Installing pacstall & packages"
 sudo bash -c "$(curl -fsSL https://pacstall.dev/q/install || wget -q https://pacstall.dev/q/install -O -)"

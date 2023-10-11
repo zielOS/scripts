@@ -1,20 +1,20 @@
-deb http://ca.archive.ubuntu.com/ubuntu lunar main restricted
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar main restricted
-deb http://ca.archive.ubuntu.com/ubuntu lunar-updates main restricted
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar-updates main restricted
-deb http://ca.archive.ubuntu.com/ubuntu lunar universe
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar universe
-deb http://ca.archive.ubuntu.com/ubuntu lunar-updates universe
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar-updates universe
-deb http://ca.archive.ubuntu.com/ubuntu lunar multiverse
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar multiverse
-deb http://ca.archive.ubuntu.com/ubuntu lunar-updates multiverse
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar-updates multiverse
-deb http://ca.archive.ubuntu.com/ubuntu lunar-backports main restricted universe multiverse
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar-backports main restricted universe multiverse
-deb http://ca.archive.ubuntu.com/ubuntu lunar-security main restricted
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar-security main restricted
-deb http://ca.archive.ubuntu.com/ubuntu lunar-security universe
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar-security universe
-deb http://ca.archive.ubuntu.com/ubuntu lunar-security multiverse
-deb-src http://ca.archive.ubuntu.com/ubuntu lunar-security multiverse
+deb http://ca.archive.ubuntu.com/ubuntu mantic main restricted
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic main restricted
+deb http://ca.archive.ubuntu.com/ubuntu mantic-updates main restricted
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic-updates main restricted
+deb http://ca.archive.ubuntu.com/ubuntu mantic universe
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic universe
+deb http://ca.archive.ubuntu.com/ubuntu mantic-updates universe
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic-updates universe
+deb http://ca.archive.ubuntu.com/ubuntu mantic multiverse
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic multiverse
+deb http://ca.archive.ubuntu.com/ubuntu mantic-updates multiverse
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic-updates multiverse
+deb http://ca.archive.ubuntu.com/ubuntu mantic-backports main restricted universe multiverse
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic-backports main restricted universe multiverse
+deb http://ca.archive.ubuntu.com/ubuntu mantic-security main restricted
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic-security main restricted
+deb http://ca.archive.ubuntu.com/ubuntu mantic-security universe
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic-security universe
+deb http://ca.archive.ubuntu.com/ubuntu mantic-security multiverse
+deb-src http://ca.archive.ubuntu.com/ubuntu mantic-security multiverse
